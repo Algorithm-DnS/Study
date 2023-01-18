@@ -35,18 +35,38 @@ import Foundation
 //print("\(X) \(Y)")
 //
 //MARK: - 예제 4-2
-let N = Int(readLine()!)!
-var count = 0
-for i in 0...N{
-    for j in 0...59 {
-        for k in 0...59 {
-           let time = String(i)+String(j)+String(k)
-            if time.contains("3") {
-                count += 1
-            }
-        }
-        
-    }
-}
-
-print("\(count)")
+//let N = Int(readLine()!)!
+//var count = 0
+//for i in 0...N{
+//    for j in 0...59 {
+//        for k in 0...59 {
+//           let time = String(i)+String(j)+String(k)
+//            if time.contains("3") {
+//                count += 1
+//            }
+//        }
+//
+//    }
+//}
+//
+//print("\(count)")
+//MARK: - 실전문제 2 왕실의 나이트
+//struct stepModel {
+//    var x : Int
+//    var y : Int
+//
+//}
+//
+//let input = Array(readLine()!).map{String($0)}
+//var x = Character(input[0]).unicodeScalars.first!.value - Character("a").unicodeScalars.first!.value + 1
+//var y = input[1]
+//let step = [stepModel(x:2,y:1),stepModel(x:-2,y:1),stepModel(x:2,y:-1),stepModel(x:-2,y:-1),stepModel(x:1,y:2),stepModel(x:-1,y:2),stepModel(x:1,y:-2),stepModel(x:-1,y:-2)]
+//var count = 0
+//for i in step{
+//    let nextX = Int(x) + i.x
+//    let nextY = Int(y)! + i.y
+//    if 1 ... 8 ~= nextX && 1...8 ~= nextY {
+//        count+=1
+//    }
+//}
+//print("\(count)")
