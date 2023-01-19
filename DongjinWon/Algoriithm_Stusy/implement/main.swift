@@ -70,3 +70,20 @@ import Foundation
 //    }
 //}
 //print("\(count)")
+//MARK: - Q07 럭키스트레이트
+let input = Array(readLine()!).map{Int(String($0))!}
+let slicePoint = input.count/2
+let firstSlice = input.prefix(slicePoint)
+var firstSum = 0
+let secondSlice = input.suffix(slicePoint)
+var secondSum = 0
+for i in 0..<slicePoint{
+    firstSum += firstSlice[i]
+    secondSum += secondSlice[i+slicePoint]
+}
+if firstSum == secondSum {
+    print("LUCKY")
+}else{
+    print("READY")
+}
+
