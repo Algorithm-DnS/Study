@@ -57,7 +57,7 @@
 		F833798E296D0DF10075CA86 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F84B3C25297588BB00B17E18 /* implement */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = implement; sourceTree = BUILT_PRODUCTS_DIR; };
 		F84B3C27297588BB00B17E18 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		F8B50300296413F3009BC1B6 /* Algoriithm_Stusy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algoriithm_Stusy; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8B50300296413F3009BC1B6 /* Algoriithm_Study */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algoriithm_Study; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B50303296413F3009BC1B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F8B5030E29641436009BC1B6 /* Greedy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Greedy; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B5031029641436009BC1B6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		F8B502F7296413F3009BC1B6 = {
 			isa = PBXGroup;
 			children = (
-				F8B50302296413F3009BC1B6 /* Algoriithm_Stusy */,
+				F8B50302296413F3009BC1B6 /* Algoriithm_Study */,
 				F8B5030F29641436009BC1B6 /* Greedy */,
 				F833798D296D0DF10075CA86 /* practiceProblem */,
 				F84B3C26297588BB00B17E18 /* implement */,
@@ -125,7 +125,7 @@
 		F8B50301296413F3009BC1B6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8B50300296413F3009BC1B6 /* Algoriithm_Stusy */,
+				F8B50300296413F3009BC1B6 /* Algoriithm_Study */,
 				F8B5030E29641436009BC1B6 /* Greedy */,
 				F833798C296D0DF10075CA86 /* practiceProblem */,
 				F84B3C25297588BB00B17E18 /* implement */,
@@ -133,12 +133,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F8B50302296413F3009BC1B6 /* Algoriithm_Stusy */ = {
+		F8B50302296413F3009BC1B6 /* Algoriithm_Study */ = {
 			isa = PBXGroup;
 			children = (
 				F8B50303296413F3009BC1B6 /* main.swift */,
 			);
-			path = Algoriithm_Stusy;
+			path = Algoriithm_Study;
 			sourceTree = "<group>";
 		};
 		F8B5030F29641436009BC1B6 /* Greedy */ = {
@@ -186,9 +186,9 @@
 			productReference = F84B3C25297588BB00B17E18 /* implement */;
 			productType = "com.apple.product-type.tool";
 		};
-		F8B502FF296413F3009BC1B6 /* Algoriithm_Stusy */ = {
+		F8B502FF296413F3009BC1B6 /* Algoriithm_Study */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F8B50307296413F3009BC1B6 /* Build configuration list for PBXNativeTarget "Algoriithm_Stusy" */;
+			buildConfigurationList = F8B50307296413F3009BC1B6 /* Build configuration list for PBXNativeTarget "Algoriithm_Study" */;
 			buildPhases = (
 				F8B502FC296413F3009BC1B6 /* Sources */,
 				F8B502FD296413F3009BC1B6 /* Frameworks */,
@@ -198,9 +198,9 @@
 			);
 			dependencies = (
 			);
-			name = Algoriithm_Stusy;
+			name = Algoriithm_Study;
 			productName = Algoriithm_Stusy;
-			productReference = F8B50300296413F3009BC1B6 /* Algoriithm_Stusy */;
+			productReference = F8B50300296413F3009BC1B6 /* Algoriithm_Study */;
 			productType = "com.apple.product-type.tool";
 		};
 		F8B5030D29641436009BC1B6 /* Greedy */ = {
@@ -244,7 +244,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F8B502FB296413F3009BC1B6 /* Build configuration list for PBXProject "Algoriithm_Stusy" */;
+			buildConfigurationList = F8B502FB296413F3009BC1B6 /* Build configuration list for PBXProject "Algoriithm_Study" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -257,7 +257,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F8B502FF296413F3009BC1B6 /* Algoriithm_Stusy */,
+				F8B502FF296413F3009BC1B6 /* Algoriithm_Study */,
 				F8B5030D29641436009BC1B6 /* Greedy */,
 				F833798B296D0DF10075CA86 /* practiceProblem */,
 				F84B3C24297588BB00B17E18 /* implement */,
@@ -523,7 +523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F8B502FB296413F3009BC1B6 /* Build configuration list for PBXProject "Algoriithm_Stusy" */ = {
+		F8B502FB296413F3009BC1B6 /* Build configuration list for PBXProject "Algoriithm_Study" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F8B50305296413F3009BC1B6 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F8B50307296413F3009BC1B6 /* Build configuration list for PBXNativeTarget "Algoriithm_Stusy" */ = {
+		F8B50307296413F3009BC1B6 /* Build configuration list for PBXNativeTarget "Algoriithm_Study" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F8B50308296413F3009BC1B6 /* Debug */,
