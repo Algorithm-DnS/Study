@@ -70,6 +70,62 @@ import Foundation
 //    }
 //}
 //print("\(count)")
+// MARK: -  게임 개발
+//let input1 = readLine()!.split(separator: " ").map{Int($0)!}
+//let N = input1[0]
+//let M = input1[1]
+//let input2 = readLine()!.split(separator: " ").map{Int($0)!}
+//var x = input2[0]
+//var y = input2[1]
+//var dir = input2[2]
+//var map  =  [[Int]]()
+//for _ in 0..<M{
+//    map.append(readLine()!.split(separator: " ").map{Int($0)!})
+//}
+//print("\(map)")
+//let dx = [-1,0,1,0]
+//let dy = [0,1,0,-1]
+//func turnleft(){
+//    dir -= 1
+//    if dir == -1 {
+//        dir = 3
+//    }
+//}
+//var count = 1
+//var turnT = 0
+//var nx = 0
+//var ny = 0
+//
+//while true {
+//    turnleft()
+//    nx = x + dx[dir]
+//    ny = y + dy[dir]
+//    // 왼쪽방향으로 간후 전진할수 있을경우
+//    if map[nx][ny] == 0 {
+//        map[nx][ny] = 1
+//        x = nx
+//        y = ny
+//        count+=1
+//        turnT =  0
+//        continue
+//    }else {
+//        turnT += 1
+//    }
+//    // turtT+=1 이유 ? 4방향 가지다 가지못한다면 TunrT = 4를 이용하여 뒤로 가기 위함
+//    if turnT == 4 {
+//        // 후진은 반대로 -이기 때문에 빼줌
+//        nx = x - dx[dir]
+//        ny = y - dx[dir]
+//        if map[nx][ny] == 0 {
+//            x = nx
+//            y = ny
+//        }else{
+//            break
+//        }
+//        turnT = 0
+//    }
+//}
+//print("\(count)")
 //MARK: - Q07 럭키스트레이트
 //let input = Array(readLine()!).map{Int(String($0))!}
 //let slicePoint = input.count/2
@@ -86,16 +142,19 @@ import Foundation
 //}else{
 //    print("READY")
 //}
-MARK: - Q08 문자열 재정렬
-var sum = 0
-var input = Array(readLine()!).map{String($0)}.sorted()
-var result = ""
-let num = input.compactMap{String in Int(String)}
-for i in num{
-    sum+=i
-}
-input.removeSubrange(0..<num.count)
-for i in input{
-    result += i
-}
-print("\(result)\(sum)")
+// MARK: - Q08 문자열 재정렬
+//var sum = 0
+//var input = Array(readLine()!).map{String($0)}.sorted()
+//var result = ""
+//let num = input.compactMap{String in Int(String)}
+//for i in num{
+//    sum+=i
+//}
+//input.removeSubrange(0..<num.count)
+//for i in input{
+//    result += i
+//}
+//print("\(result)\(sum)")
+
+
+            
