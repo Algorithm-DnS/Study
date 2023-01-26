@@ -156,5 +156,56 @@ import Foundation
 //}
 //print("\(result)\(sum)")
 
+// MARK: - Q09 문자열 압축
 
-            
+//MARK: - 참조 : https://velog.io/@leeesangheee/Level-2-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%95%95%EC%B6%95-Swift
+//func solution(_ s:String) -> Int {
+//    // 문자열 길이 2이상은 압축이 되지 않음
+//    // ab -> ab ,aa -> 2a 결국에 동일
+//    if s.count <= 2 {
+//        return s.count
+//    }
+//    var result : Int = s.count
+//    for i in 1...(s.count/2) { //arrS.count/2 한이유 문자열이 8개인 경우 문자열을 5개씩 단위로 자를경우 결국에는 똑같은 문자열  ex) aabbc def 로나누면 결국엔 stirng값 동일함, 문자열 길이의 반까지만 압축이 가능함
+//        let sliceStr = sliceString(str: s, step: i )
+//        let compressString = compressStr(strArr: sliceStr)
+//        let min = compressString.count
+//        if min < result { result = min}
+//    }
+//    return result
+//}
+//func sliceString(str : String , step : Int) -> [String] {
+//    var result : [String] = []
+//    var temp = ""
+//    for s in str{
+//        temp+=String(s)
+//        if temp.count >= step {
+//            result.append(temp)
+//            temp = ""
+//        }
+//    }
+//    if temp != "" { result.append(temp)} // 홀수 일경우
+//    return result
+//}
+//func compressStr(strArr :[String]) -> String {
+//    var result : String = ""
+//    var temp : String = ""
+//    var count : Int = 1
+//    for s in strArr{
+//        if temp == s {
+//            count+=1
+//        }else{
+//            if temp != ""{
+//                result += (count > 1) ? "\(count)\(temp)" : "\(temp)"
+//            }
+//            temp = s
+//            count = 1
+//        }
+//    }
+//    if temp != "" {
+//        result += (count > 1) ? "\(count)\(temp)" : "\(temp)"
+//    }
+//    return result
+//
+//}
+//
