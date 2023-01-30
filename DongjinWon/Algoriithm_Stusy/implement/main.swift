@@ -209,3 +209,101 @@ import Foundation
 //
 //}
 //
+
+// MARK: - Q12 기둥과 보설치
+// 참조 : https://fomaios.tistory.com/entry/Swift-2020-KAKAO-BLIND-RECRUITMENT-%EA%B8%B0%EB%91%A5%EA%B3%BC-%EB%B3%B4-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+//var pillar : [[Bool]] = [] //기둥
+//var pillarPos : [(Int,Int)] = []
+//var paper : [[Bool]] = [] // 보
+//var paperPos : [(Int,Int)] = []
+//func solution(_ n:Int, _ build_frame:[[Int]]) -> [[Int]] {
+//    pillar = Array(repeating: Array(repeating: false, count: n+1), count: n+1)
+//    paper = Array(repeating: Array(repeating: false, count: n+1), count: n+1)
+//    for i in build_frame{
+//        let x = i[0]
+//        let y = i[1]
+//        if i[3] == 1 { //설치
+//            if i[2] == 0 { // 기둥일때
+//                if checkPillar(x: x, y: y){
+//                    pillar[x][y] = true
+//                    pillarPos.append((x,y))
+//                }
+//            }else{// 보일때
+//                if checkPaper(x: x, y: y, n: n){
+//                    paper[x][y] = true
+//                    paperPos.append((x,y))
+//                }
+//            }
+//        }else { //삭제
+//            if i[2] == 0{ //기둥일떄
+//                pillar[x][y] = false
+//                if let index = pillarPos.firstIndex(where: {$0 == (x,y)}){
+//                    pillarPos.remove(at: index)
+//                }
+//                
+//                if !checkStructure(n: n){
+//                    pillar[x][y] = true
+//                    pillarPos.append((x,y))
+//                }
+//              
+//            }else{ //보일때
+//                paper[x][y] = false
+//                if let index = paperPos.firstIndex(where: {$0 == (x,y)}){
+//                    paperPos.remove(at: index)
+//                }
+//                if !checkStructure(n: n){
+//                    paper[x][y] = true
+//                    paperPos.append((x,y))
+//                }
+//            }
+//        }
+//    }
+//    let result = pillarPos.map{[$0.0,$0.1,0]} + paperPos.map{[$0.0,$0.1,1]}
+//      return result.sorted { $0[0] == $1[0] ? $0[1] == $1[1] ? $0[2] < $1[2] : $0[1] < $1[1] : $0[0] < $1[0]
+//      }
+//}
+//func checkPillar(x: Int ,y : Int)-> Bool{
+//    if y == 0 || pillar[x][y-1] || paper[x][y]{
+//        return true
+//    }
+//    if x > 0 {
+//        if paper[x-1][y]{
+//            return true
+//        }
+//    }
+//    return false
+//}
+//func checkPaper(x: Int ,y : Int,n : Int)-> Bool{
+//    if pillar[x][y-1] {
+//        return true
+//    }
+//    if x < n {
+//        if pillar[x+1][y-1]{
+//            return true
+//        }
+//    }
+//    if x > 0 && x < n{
+//        if paper[x-1][y] && paper[x+1][y]{
+//            return true
+//        }
+//    }
+//    return false
+//}
+//func checkStructure(n : Int) -> Bool{
+//    for pillar in pillarPos{
+//    
+//        if !checkPillar(x: pillar.0, y: pillar.1){
+//            
+//            return false
+//        }
+//    }
+//    for paper in paperPos{
+//        if !checkPaper(x: paper.0, y: paper.1, n: n){
+//            
+//            return false
+//        }
+//    }
+//    return true
+//}
+//
+//
