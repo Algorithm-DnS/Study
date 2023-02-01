@@ -240,12 +240,12 @@ import Foundation
 //                if let index = pillarPos.firstIndex(where: {$0 == (x,y)}){
 //                    pillarPos.remove(at: index)
 //                }
-//                
+//
 //                if !checkStructure(n: n){
 //                    pillar[x][y] = true
 //                    pillarPos.append((x,y))
 //                }
-//              
+//
 //            }else{ //보일때
 //                paper[x][y] = false
 //                if let index = paperPos.firstIndex(where: {$0 == (x,y)}){
@@ -284,26 +284,85 @@ import Foundation
 //    }
 //    if x > 0 && x < n{
 //        if paper[x-1][y] && paper[x+1][y]{
-//            return true
+//            return trure
 //        }
 //    }
 //    return false
 //}
 //func checkStructure(n : Int) -> Bool{
 //    for pillar in pillarPos{
-//    
+//
 //        if !checkPillar(x: pillar.0, y: pillar.1){
-//            
+//
 //            return false
 //        }
 //    }
 //    for paper in paperPos{
 //        if !checkPaper(x: paper.0, y: paper.1, n: n){
-//            
+//
 //            return false
 //        }
 //    }
 //    return true
 //}
 //
+//
+
+//MARK: - Q13 치킨배달 백준 15686
+//참고 : https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gustn3964&logNo=222114676468
+//let input = readLine()!.split(separator: " ").map{Int($0)!}
+//let n = input[0]
+//let m = input[1]
+//var chicken : [Int] = [] , house : [Int] = []
+//var answer = Int.max
+//// 치킨집과 집의 위치
+//for i in 0..<n {
+//    let map = readLine()!.split(separator: " ").map{Int($0)!}
+//    for j in 0..<n{
+//        if map[j] == 1 {
+//            house.append(i*n + j)
+//        }
+//        else if map[j] == 2{
+//            chicken.append(i*n + j)
+//        }
+//    }
+//}
+////치킨 집 조합
+//func combination(select : [Int], index : Int){
+//    
+//    if select.count == m {
+//        answer = min(answer, minDist(selctChiken: select))
+//    }else {
+//        for i in index..<chicken.count{
+//            combination(select: select+[chicken[i]], index: i+1)
+//        }
+//    }
+//    
+//}
+////최소거리
+//func minDist(selctChiken : [Int]) -> Int{
+//    var dists = 0
+//    for i in house {
+//        let houseCoor = transInt(target: i)
+//        var mindist = Int.max
+//        for j in selctChiken {
+//            let dist = distCal(r:transInt(target: j) , c: houseCoor)
+//            mindist = min(mindist, dist)
+//        }
+//        
+//        dists += mindist
+//    }
+//    return dists
+//}
+//// 정수 변환
+//func transInt(target : Int) ->(Int,Int){
+//    return (target/n ,target%n)
+//}
+//// 거리계산
+//func distCal(r : (Int,Int) , c :(Int,Int)) -> Int{
+//    return abs(r.0-c.0)+abs(r.1-c.1)
+//}
+//combination(select: [], index: 0)
+//
+//print("\(answer)")
 //
