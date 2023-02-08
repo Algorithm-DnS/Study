@@ -112,8 +112,8 @@ import Foundation
 //var queue = [[Int]]()
 //bfs(0, 0) // bfs가장 가까운 노드를 탐색할수 있기때문 0,0이 기준
 //// 목표가 항상 오른쪽 끝임으로 다른 노드의 count가 증가해도 상관이 없음.
-//var nx = 0 // 현재 노드의 x좌표
-//var ny = 0 // 현재 노드의 y좌표
+//var nx = 0 // 이동후의 x좌표
+//var ny = 0 // 이동후의 y좌표
 //func bfs(_ x : Int,_ y : Int){
 //    queue.append([x,y])
 //    while queue.count != 0 {
@@ -180,3 +180,90 @@ import Foundation
 //}
 //
 //
+//MARK: - Q 16 연구소 백준 14502
+
+//let input = readLine()!.split(separator: " ").map{Int(String($0))!}
+//let (N,M) = (input[0],input[1])
+//var map = [[Int]]()
+//var safeArea = [[Int]]()
+//var virusArea = [[Int]]()
+//var answer = 0
+//for _ in 0..<N { // map 추가
+//    map.append(readLine()!.split(separator: " ").map{Int(String($0))!})
+//}
+//for i in 0..<N{ // 안전영역
+//    for j in 0..<M{
+//        if map[i][j] == 0 {
+//            safeArea.append([i,j])
+//        }else if map[i][j] == 2 {
+//            virusArea.append([i,j])
+//        }
+//    }
+//}
+////상하좌우
+//let dx = [-1,1,0,0]
+//let dy = [0,0,-1,1]
+//// 3개의 빈벽 세운후의 맵
+//
+//func combi(_ index: Int, _ arr: [[Int]]) {
+//    var temp = map // 벽 3개를 세운 맵
+//    if arr.count == 3 {
+//        let first = arr[0]
+//        let second = arr[1]
+//        let third = arr[2]
+//        temp[first[0]][first[1]] = 1 // 벽세움
+//        temp[second[0]][second[1]] = 1
+//        temp[third[0]][third[1]] = 1
+//        virusGetSafeArea(temp) // 벽을 세우고 바이러스 퍼트린후 safeArea 검사
+//        return
+//    }
+//
+//    // 순서가 상관없으므로 앞의 인덱스를 확인할 필요가 없음
+//    for i in index..<safeArea.count {
+//        combi(i+1, arr + [safeArea[i]])
+//    }
+//}
+//var queue : [Int] = []
+//var nx = 0 // 이동후 x좌표
+//var ny = 0 // 이동후 y좌표
+//// 바이러스 퍼트린후 안전영역의 좌표
+//func virusGetSafeArea(_ map: [[Int]]){
+//    var map = map
+//    var queue = virusArea
+//    while queue.count != 0{
+//        let now = queue.removeFirst()
+//        let x = now[0] // 바이러스가 존재하는 좌표
+//        let y = now[1]
+//        for i in 0..<4 { //4방향
+//            nx = x + dx[i]
+//            ny = y + dy[i]
+//
+//            if nx < 0 || ny < 0 || nx >= N || ny >= M{
+//                continue // 맵을 넘어설때
+//            }else if map[nx][ny] == 2 { //바이러스가 있을경우
+//                continue
+//            }else {
+//                if map[nx][ny] == 0{ //바이러스를 퍼트릴수있는경우
+//                    map[nx][ny] = 2
+//                    queue.append([nx,ny])
+//                }
+//            }
+//
+//        }
+//    }
+//    var safeCount = 0
+////MARK: - 안전영역 세기
+//    for i in 0..<N{
+//        for j in 0..<M{
+//            if map[i][j] == 0{
+//                safeCount+=1
+//            }
+//        }
+//    }
+//    if answer < safeCount {
+//        answer = safeCount
+//    }
+//}
+//
+//combi(0,[])
+//print("\(answer)")
