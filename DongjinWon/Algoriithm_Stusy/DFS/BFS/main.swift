@@ -6,24 +6,7 @@
 //
 
 import Foundation
-//struct Queue<T>{
-//    private var queue : [T] = []
-//    public var count : Int{
-//        return queue.count
-//    }
-//    public var isEmpty : Bool {
-//        return queue.isEmpty
-//    }
-//    public mutating func enqueue(_ element : T){
-//        queue.append(element)
-//    }
-//    public mutating func dequeue() -> T?{
-//        return isEmpty ? nil : queue.removeFirst()
-//    }
-//    public mutating func clear(){
-//        queue.removeAll()
-//    }
-//}
+
 //let test = [
 //[], //0
 //[2,3,8], //1
@@ -267,3 +250,51 @@ import Foundation
 //
 //combi(0,[])
 //print("\(answer)")
+//MARK: - 실전 Q17 경쟁적 전염 백준 18405
+//struct Virus : Comparable{
+//    static func < (lhs: Virus, rhs: Virus) -> Bool {
+//        return lhs.num < rhs.num
+//    }
+//    
+//    let num : Int
+//    let x : Int
+//    let y : Int
+//    let time : Int
+//}
+//let input = readLine()!.split(separator: " ").map{Int(String($0))!}
+//let (N,K) = (input[0],input[1])
+//var datas : [Virus] = []
+//var graph = [[Int]]()
+//for i in 0..<N{
+//    let input2 = readLine()!.split(separator: " ").map{Int(String($0))!}
+//    graph.append(input2)
+//    for j in 0..<N {
+//        if graph[i][j] != 0 {
+//            datas.append(Virus(num: graph[i][j], x: i, y: j, time: 0))
+//        }
+//    }
+//}
+//datas.sort()
+//let input3 = readLine()!.split(separator: " ").map{Int(String($0))!}
+//let (S,X,Y) = (input3[0],input3[1]-1,input3[2]-1)
+//var queue : [Virus] = []
+//let dx = [-1,1,0,0]
+//let dy = [0,0,-1,1]
+//for data in datas {
+//    queue.append(data)
+//}
+//
+//while !queue.isEmpty{
+//    let now = queue.removeFirst()
+//    let x = now.x
+//    let y = now.y
+//    for i in 0..<dx.count{
+//        let nx = x + dx[i]
+//        let ny = y + dy[i]
+//        if 0 <= nx ,nx < N,0 <= ny , ny < N , graph[nx][ny] == 0 , now.time < S{
+//            graph[nx][ny] = now.num
+//            queue.append(Virus(num: now.num, x: nx, y: ny, time: now.time+1))
+//        }
+//    }
+//}
+//print("\(graph[X][Y])")

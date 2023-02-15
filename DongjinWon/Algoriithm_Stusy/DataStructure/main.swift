@@ -27,22 +27,4 @@ import Foundation
 //    }
 //}
 //MARK: - Queue 구현
-//struct Queue<T>{
-//    private var queue : [T] = []
-//    public var count : Int{
-//        return queue.count
-//    }
-//    public var isEmpty : Bool {
-//        return queue.isEmpty
-//    }
-//    public mutating func enqueue(_ element : T){
-//        queue.append(element)
-//    }
-//    public mutating func dequeue(_ element : T) -> T?{
-//        return isEmpty ? nil : queue.removeFirst()
-//    }
-//    public mutating func clear(){
-//        queue.removeAll()
-//    }
-//}
-//
+
