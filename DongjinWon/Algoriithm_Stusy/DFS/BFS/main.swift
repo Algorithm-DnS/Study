@@ -250,6 +250,7 @@ import Foundation
 //
 //combi(0,[])
 //print("\(answer)")
+
 //MARK: - 실전 Q17 경쟁적 전염 백준 18405
 //struct Virus : Comparable{
 //    static func < (lhs: Virus, rhs: Virus) -> Bool {
@@ -298,3 +299,167 @@ import Foundation
 //    }
 //}
 //print("\(graph[X][Y])")
+
+//MARK: - 실전 Q18 괄호 변환
+//func solution(_ p:String) -> String {
+//    if p.count < 1 {return ""}
+//    var count = 0 , index = p.startIndex
+//    repeat{
+//        if String(p[index]) == "("{
+//            count+=1
+//        }else {
+//            count-=1
+//        }
+//        index = p.index(after: index)
+//    }while count != 0
+//    var u = String(p[..<index])
+//    var v = String(p[index...])
+//    if String(u.first!) == "("{
+//        return u + solution(v)
+//    }else{
+//        u.removeLast()
+//        u.removeFirst()
+//        return "(\(solution(v)))\(u.map{String($0) == "(" ? ")" :"("}.joined())"
+//    }
+//
+//}
+//print("\(solution("(()())()"))")
+
+//MARK: - 연산자 끼워 넣기 백준  14888
+//let N = Int(readLine()!)!
+//let data = readLine()!.split(separator: " ").map{Int(String($0))!}
+//var oper = readLine()!.split(separator: " ").map{Int(String($0))!}
+//var min_value = Int.max
+//var max_value = Int.min
+//
+//func dfs(depth:Int, sum : Int){
+//    if depth == N {
+//        max_value = max(max_value,sum)
+//        min_value = min(min_value,sum)
+//        return
+//    }
+//    for idx in 0...3 {
+//        if oper[idx] > 0 {
+//            oper[idx]-=1
+//            switch idx {
+//            case 0 :
+//                dfs(depth: depth+1, sum: sum+data[depth])
+//            case 1 :
+//                dfs(depth: depth+1, sum: sum-data[depth])
+//            case 2 :
+//                dfs(depth: depth+1, sum: sum*data[depth])
+//            case 3 :
+//                dfs(depth: depth+1, sum: sum/data[depth])
+//            default:
+//                break
+//            }
+//            oper[idx]+=1
+//        }
+//    }
+//
+//}
+//dfs(depth: 1, sum: data[0])
+//print("\(max_value)")
+//print("\(min_value)")
+//MARK: - 감시 피하기 백준 18428
+//let N  = Int(readLine()!)!
+//var board = [[String]]()
+//var teacher = [(Int,Int)]()
+//var spaces = [[Int]]()
+//var cnt = 3
+//
+////1. 전체 맵 데이터 저장
+////2. 선생님 위치 저장
+////3. 빈공간 저장
+//for i in 0..<N{
+//    let input = readLine()!.split(separator: " ").map{String($0)}
+//    board.append(input)
+//    for j in 0..<N{
+//        if board[i][j] == "T"{
+//            teacher.append((i,j))
+//        }
+//        if board[i][j] == "X"{
+//            spaces.append([i,j])
+//        }
+//    }
+//}
+////
+//func watch(x : Int,y : Int,direction : Int)-> Bool{
+//    var dx = x
+//    var dy = y
+//    switch direction {
+//    case 0: // 왼쪽 방향일때
+//        while dy >= 0{
+//            if board[dx][dy] == "S"{
+//                return true
+//            }
+//            if board[dx][dy] == "O"{
+//                return false
+//            }
+//            dy-=1
+//        }
+//    case 1: //오른쪽 방향일때
+//        while dy < N{
+//            if board[dx][dy] == "S"{
+//                return true
+//            }
+//            if board[dx][dy] == "O"{
+//                return false
+//            }
+//            dy+=1
+//        }
+//    case 2: //위쪽일때
+//        while dx >= 0{
+//            if board[dx][dy] == "S"{
+//                return true
+//            }
+//            if board[dx][dy] == "O"{
+//                return false
+//            }
+//            dx-=1
+//        }
+//    case 3:
+//        while dx < N{
+//            if board[dx][dy] == "S"{
+//                return true
+//            }
+//            if board[dx][dy] == "O"{
+//                return false
+//            }
+//            dx+=1
+//        }
+//    default :
+//        break
+//    }
+//    
+//    return false
+//}
+////장애물 설치이후 한명이라도 학생이 감지되는지 검사
+//func studentWatch()->Bool{
+//    for i in teacher{
+//        for j in 0...3{
+//            if watch(x: i.0 , y: i.1, direction: j){
+//                return true
+//            }
+//        }
+//    }
+//    return false
+//}
+//var find = false
+//func dfs(_ index: Int,_ cnt: Int){
+//    if cnt == 3{ //벽 3개 생성후 4방향으로 직진 하여 학생있으면 true 없으면 false
+//        if !studentWatch() {
+//            find = true
+//        }
+//        return
+//    }
+//    for i in index..<spaces.count { // 벽을만들수 있는 조합수 생성
+//        let nx = spaces[i][0]
+//        let ny = spaces[i][1]
+//        board[nx][ny] = "O" //벽생성
+//        dfs(i+1, cnt+1) // 벽 3개 생길때까지 dfs 진행
+//        board[nx][ny] = "X" // 다음 경우의 수 벽을 위해 벽삭제
+//      }
+//}
+//dfs(0,0)
+//print("\(find ? "YES" : "NO")")
