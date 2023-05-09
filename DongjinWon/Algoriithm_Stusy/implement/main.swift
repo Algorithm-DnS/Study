@@ -366,7 +366,70 @@ import Foundation
 //
 //print("\(answer)")
 //
-
-
-
+//MARK: - 로봇청소기
+/*
+ 로봇 청소기 , 방의 상태가 주어졌을때 청소하는 영역의 개수를 구하라
+ 로봋 청소기가 있는 방 N * M 직사각형 ,1 * 1 정사각형, 각각의 칸은 벽 또는 빈칸 , 청소기 방향 존재 동서 남북중 하나 , 방의 각 칸은 좌표(r,c) 북쪽 줄의 가장 서쪽 칸 좌표 0,0 / 남쪽의 가장 동쪽칸의 좌표 (N-1,M-1)
+ 청소기 동작
+ 1 빈방일 경우 청소ㅓ 진행
+ 2 현재 칸의 주변 4칸중 청소되지 않은 빈칸이 없는경우
+ 2-1 바라보는 방향을 유지한채로 한칸 후진할수 있다면 한칸 후진하고 1 번
+ 2-2 바라보는 방향의 뒤쪽칸이 벽이라 후진할수 없다면 작동 멈춤
+ 
+ 3 현재 칸의 주변 4칸중 청소되지 않은 빈칸이 있는 경우
+3-1 반시계 방향으로 90도 회전
+ 2 바라보는 방향을 기준으로 압쪽칸이 청소되지 않은 빈칸인 경우 한칸 전진
+ 
+ */
+// 너무 어렵게 생각함 Bfs 나 dfs를 사용해야되는줄 알았지만 x
+import Foundation
+//참조 : https://sapjilkingios.tistory.com/entry/Swift%EA%B5%AC%ED%98%84-%EB%B0%B1%EC%A4%80-14503%EB%B2%88-%EB%A1%9C%EB%B4%87%EC%B2%AD%EC%86%8C%EA%B8%B0
+let input = readLine()!.split(separator:" ").map{Int(String($0))!}
+let (N,M) = (input[0],input[1]) // 방크기 N, M
+var map = [[Int]]() // Map 좌표
+let input2 = readLine()!.split(separator:" ").map{Int(String($0))!}
+var (x,y,dir) = (input2[0],input2[1],input2[2]) // 청소기 좌표 x,y ,방향 dir
+for _ in 0..<N {
+    let input3 = readLine()!.split(separator:" ").map{Int(String($0))!}
+    map.append(input3)
+}
+//상우하좌
+var dx = [-1,0,1,0]
+var dy = [0,1,0,-1]
+var visited = Array(repeating: Array(repeating:false,count : M),count : N)
+visited[x][y] = true
+var result = 1
+var cnt = 0 // 여기까지는 내가 쓴코드와 같았음
+while true {
+    // 방향 전환
+    // for _ in 0..3  ~~ 이렇게 할필요가 없었다.. 반시계방향 돌린후 청소 가능하면 청소하면되기 때문
+    dir-=1
+    if dir == -1{ // 0일경우 -1 이되는데 3으로 넘어가면되기 때문
+        dir=3
+    }
+    var nx = x + dx[dir] // 앞으로 이동
+    var ny = y + dy[dir]
+    if !visited[nx][ny] && map[nx][ny] != 1 { //청소 안했고 벽이 아니라면
+        visited[nx][ny] = true // 이동하고 청소함
+        x = nx // 이동한 기준을 청소기의 좌표로
+        y = ny //
+        result+=1 // 시간 흐름
+        cnt = 0 // 방향 초기화
+        continue
+    }else{ // 청소를 했거나 벽이라면
+        cnt+=1 // 회전만 하면 됨
+    }
+    if cnt == 4{ // 모든 부분 회전했을경우
+        cnt = 0 // 회전 초기화
+        nx = x - dx[dir] // 한칸 후진  ** 전진은 + 후진은 -
+        ny = y - dy[dir] //
+        if map[nx][ny] != 1{ // 후진 가능할 경우= 벽이 아닐경우
+            x = nx
+            y = ny
+        }else{ // 벽일경우 stop
+            break
+        }
+    }
+}
+print(result)
 

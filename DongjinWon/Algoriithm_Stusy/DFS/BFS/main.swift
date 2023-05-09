@@ -290,7 +290,7 @@ import Foundation
 //    let x = now.x
 //    let y = now.y
 //    for i in 0..<dx.count{
-//        let nx = x + dx[i]
+//        let nx = x + dx[i]size
 //        let ny = y + dy[i]
 //        if 0 <= nx ,nx < N,0 <= ny , ny < N , graph[nx][ny] == 0 , now.time < S{
 //            graph[nx][ny] = now.num
@@ -463,3 +463,77 @@ import Foundation
 //}
 //dfs(0,0)
 //print("\(find ? "YES" : "NO")")
+//MARK: -인구 이동
+//두나라의 인구차가 L명 이상 R명 이하 라면 두나라가 공유하는 국경선을 오늘 하루동안연다.
+// open -> 인구이동
+// 국경선이 열려있는 인접한 칸만 이동가능하며 이를 연합 이라고한다.
+// 연합을 이루고 있는 각 칵의 인구수는 (연합의 인구수)/(연합을 이루고 있는 칸의 개수) -> 소수점 버림
+//연합 해제 -> 국경선 닫음
+// 상하 좌우
+let dx = [-1,1,0,0]
+let dy = [-0,0,-1,1]
+var map = [[Int]]()
+
+let input = readLine()!.split(separator: " ").map{Int(String($0))!}
+let (N,L,R) = (input[0],input[1],input[2])
+var visited = Array(repeating: Array(repeating: false, count: N), count: N)
+for _ in 0..<N{
+    let input2 = readLine()!.split(separator:" ").map{Int(String($0))!}
+    map.append(input2)
+}
+func bfs(_ i : Int ,_ j : Int) -> Int{
+    var queue = [(Int,Int)]()
+    queue.append((i,j))
+    visited[i][j] = true
+    var union = [(Int,Int)]()
+    union.append((i,j))
+    var count = 0 // 연합국가의 인구수를 더해주는 변수
+    count+=map[i][j]
+    
+    while !queue.isEmpty {
+        let now = queue.removeFirst()
+        let x = now.0
+        let y = now.1
+        for d in 0..<4{
+            let nx = x + dx[d]
+            let ny = y + dy[d]
+            if nx < 0 ||  nx >= N || ny < 0 || ny >= N{
+                continue
+            }
+            if visited[nx][ny] {
+                continue
+            }
+            let dif = abs(map[nx][ny]-map[x][y])
+            if L <= dif && dif <= R{
+                union.append((nx,ny))
+                visited[nx][ny] = true
+                count+=map[nx][ny]
+                queue.append((nx,ny))
+            }
+        }
+    }
+    let unionPeopleCnt = Int(count/union.count)
+    for location in union{
+        map[location.0][location.1] = unionPeopleCnt
+    }
+    return union.count
+}
+var day = 0
+while true {
+    visited = Array(repeating: Array(repeating: false, count: N), count: N)
+    var check = false
+    for i in 0..<N{
+        for j in 0..<N {
+            if !visited[i][j] {
+                if bfs(i, j) >= 2 {
+                    check = true
+                }
+            }
+        }
+    }
+    if !check {
+        break
+    }
+    day+=1
+}
+print(day)
